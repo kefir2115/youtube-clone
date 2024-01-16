@@ -1,0 +1,171 @@
+$bg: rgb(10, 10, 10);
+$theme: rgb(26, 78, 138);
+body {
+    background-color: $bg;
+    color: white;
+    font-family: monospace !important;
+    font-size: 1.5rem !important;
+    .top {
+        height: 2rem;
+        .searchbar {
+            width: 80%;
+            height: 2rem;
+
+            border-radius: .75rem;
+            background-color: darken($bg, 2);
+            outline: none;
+            border: none;
+            color: white;
+            margin: 1rem;
+            padding: 1rem;
+            &:focus {
+                animation: glow 2s ease-in-out infinite;
+            }
+        }
+        .widgets {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .widget {
+                position: relative;
+                margin: 0 1rem;
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                display: flex;
+                flex-direction: column;
+                width: 2rem;
+                transition: .2s ease-in-out;
+                text-shadow: -5px -5px 5px $theme, 5px 5px 5px $theme;
+                &::after {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    font-family: monospace;
+                    font-weight: 100;
+                    font-size: 1rem;
+                    transform: translate(-50%, -1rem);
+                    opacity: 0;
+                    transition: .2s ease-in-out;
+                }
+                &:hover {
+                    transform: translate(0, -.5rem);
+                    &::after {
+                        opacity: 1;
+                        transform: translate(-50%, .5rem);
+                    }
+                }
+                &.home {
+                    &::before {
+                        content: "\f015";
+                    }
+                    &::after {
+                        content: "Home";
+                    }
+                }
+                &.settings {
+                    &::before {
+                        content: "\f013";
+                    }
+                    &::after {
+                        content: "Settings";
+                    }
+                }
+                &.share {
+                    &::before {
+                        content: "\f064";
+                    }
+                    &::after {
+                        content: "Share";
+                    }
+                }
+                &.search {
+                    &::before {
+                        content: "\f1da";
+                    }
+                    &::after {
+                        content: "History";
+                    }
+                }
+                &.account {
+                    &::before {
+                        content: "\f007";
+                    }
+                    &::after {
+                        content: "Account";
+                    }
+                }
+            }
+        }
+    }
+    .content {
+        margin: 1rem;
+        iframe {
+            width: 70% !important;
+            height: 90vh !important;
+        }
+        &>div {
+            .right {
+                width: 30%;
+            }
+            display: flex;
+            flex-direction: row;
+            .title {
+                margin: .5rem;
+                padding: .5rem;
+                text-align: center;
+                border-bottom: 1px solid white;
+            }
+            .desc {
+                margin: .5rem;
+                padding: .5rem;
+                font-size: 70%;
+                font-weight: 100;
+                border-bottom: 1px solid white;
+            }
+            .views {
+                text-align: center;
+                margin: .5rem;
+                padding: .5rem;
+                font-size: 1.1rem;
+                font-weight: 100;
+                &::after {
+                    content: "views";
+                    margin-left: .5rem;
+                }
+            }
+            .ratings {
+                text-align: center;
+                margin: .5rem;
+                padding: .5rem;
+                border: 1px solid white;
+                border-radius: .5rem;
+                font-size: 1rem;
+                font-weight: 100;
+                &::before {
+                    content: "Rating: ";
+                }
+                .rating {
+                    font-size: .9rem;
+                    margin-left: .5rem;
+                }
+            }
+        }
+    }
+}
+.logo {
+    cursor: pointer;
+    user-select: none;
+    font-family: var(--bs-body-font-family);
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px 0px $theme;
+    }
+    50% {
+        box-shadow: 0 0 15px 0px $theme;
+    }
+    100% {
+        box-shadow: 0 0 10px 0px $theme;
+    }
+}
